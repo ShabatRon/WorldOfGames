@@ -1,0 +1,5 @@
+*.tgz
+requirements.lock
+*.idea/*
+.idea
+
