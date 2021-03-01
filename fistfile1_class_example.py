@@ -3,6 +3,7 @@
 # 3. shutdown the server
 # 4. verify server is actually stopped
 from time import sleep
+
 USERNAME = 'danny'
 PASSWORD = '123'
 
@@ -17,7 +18,7 @@ def get_connection(user, password):
     """
 
     print(f"connecting to aws, with {user} and {password}")
-    return True # in real life we return the connection object
+    return True  # in real life we return the connection object
 
 
 def get_all_servers(connection):
@@ -28,19 +29,18 @@ def get_all_servers(connection):
     :rtype: List
     """
 
-    print("Getting all servers") # in real life: all_server = connection.ec2.get_servers
+    print("Getting all servers")  # in real life: all_server = connection.ec2.get_servers
     return True
 
 
 def check_is_up(server, connection=None):
-
-    if server.is_up == "up": # in real life: server.is_up is doing aws call to get the actual status
+    if server.is_up == "up":  # in real life: server.is_up is doing aws call to get the actual status
         return True
 
-def shutdown(server):
 
+def shutdown(server):
     if check_is_up(server):
-        server.shutdown # in real life it sends shutdown to aws server
+        server.shutdown  # in real life it sends shutdown to aws server
 
     while check_is_up(server):
         print("server is still shutting down")
@@ -50,6 +50,7 @@ def shutdown(server):
         # hint: cooldown and fallback
 
     return True
+
 
 if __name__ == '__main__':
     conn = get_connection(USERNAME, PASSWORD)
